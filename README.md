@@ -19,3 +19,6 @@ GPU is 37 times faster than CPU!
 ## Thrust (dir:thrust)
 [CUDA toolkit documentation](http://docs.nvidia.com/cuda/thrust/index.html)
 
+*thrust1: host_vector, device_vector
+*thrust2: copy, fill, sequence
+*thrust3: replace transform functional

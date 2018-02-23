@@ -1,5 +1,11 @@
 # Learning CUDA
 
+## Hello, World! (dir:hello)
+~~~
+nvcc hello_world.cu
+./a.out
+~~~
+
 ## Matrix calculation with CPU or GPU (dir:matrix)
 ~~~
 nvcc -o matrix_gpu matrix_gpu.cu -I /opt/cuda/samples/common/inc
@@ -17,8 +23,9 @@ Processing time: 232.233826 (msec)
 GPU is 37 times faster than CPU!
 
 ## Thrust (dir:thrust)
-[CUDA toolkit documentation](http://docs.nvidia.com/cuda/thrust/index.html)
+[CUDA toolkit documentation (Thrust)](http://docs.nvidia.com/cuda/thrust/index.html)
 
-* thrust1: host_vector, device_vector
-* thrust2: copy, fill, sequence
-* thrust3: replace transform functional
+* thrust1: (Vector) host_vector, device_vector
+* thrust2: (Vector) copy, fill, sequence
+* thrust3: (Algorithms;Transformations) replace, transform, functional
+* thrust4: (Algorithms;Reductions) transform_reduce;to reduce an input sequence to a single value

@@ -1,6 +1,9 @@
-Learning CUDA
+# Learning CUDA
 
-`nvcc -o matrix_gpu matrix_gpu.cu -I /opt/cuda/samples/common/inc`
+## Matrix calculation with CPU or GPU (dir:matrix)
+~~~
+nvcc -o matrix_gpu matrix_gpu.cu -I /opt/cuda/samples/common/inc
+~~~
 
 ~~~
 time ./matrix_cpu 
@@ -11,4 +14,8 @@ Processing time: 232.233826 (msec)
 ./matrix_gpu  0.17s user 0.20s system 99% cpu 0.373 total
 ~~~
 
-37 times faster!
+GPU is 37 times faster than CPU!
+
+## Thrust (dir:thrust)
+[CUDA toolkit documentation](http://docs.nvidia.com/cuda/thrust/index.html)
+

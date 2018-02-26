@@ -17,6 +17,7 @@ A typical processing flow of a CUDA program
 - `cudaMalloc`: memory allocation
 ```
 cudaError_t cudaMalloc (void** devPtr, size_t size) ```
+```
 
 - `cudaMemcpy`: transfer data btw the host and device
 ```

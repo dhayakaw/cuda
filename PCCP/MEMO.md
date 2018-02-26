@@ -66,4 +66,4 @@ threads << blocks <<< a grid
 - blockDim.z
 ``` 
 
-** Usually, a grid is organized as a 2D array of blocks and a block is organized as a 3D array of threads **
+**Usually, a grid is organized as a 2D array of blocks and a block is organized as a 3D array of threads.**

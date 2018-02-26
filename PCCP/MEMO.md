@@ -41,3 +41,29 @@ converts error to a human-redable error message
 - `cudaFree`
 
 LISTING: summing two arrays
+
+## Organizing Threads
+All threads spawned by a single kernel launch are collectively called a grid. A grid is made up of many thread blocks.
+~~~
+threads << blocks <<< a grid
+- blockIdx (block index within a grid)
+- threadIdx (thread index within a block)
+~~~
+`uint3`: the type of the coordinate variable -> 3 components (x, y and z) are accessible
+```
+- blockIdx.x
+- blockIdx.y
+- blockIdx.z
+- threadIdx.x
+- threadIdx.y
+- threadIdx.z
+```
+
+`dim3`: threedimensions
+```
+- blockDim.x
+- blockDim.y
+- blockDim.z
+``` 
+
+** Usually, a grid is organized as a 2D array of blocks and a block is organized as a 3D array of threads **

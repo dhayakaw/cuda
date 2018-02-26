@@ -16,8 +16,7 @@ A typical processing flow of a CUDA program
 ## Managing Memory
 - `cudaMalloc`: memory allocation
 ```
-cudaError_t cudaMalloc (void** devPtr, size_t size)
-```
+cudaError_t cudaMalloc (void** devPtr, size_t size) ```
 
 - `cudaMemcpy`: transfer data btw the host and device
 ```
@@ -68,4 +67,50 @@ threads << blocks <<< a grid
 
 **You define variables for grid and block on the host before launching a kernel, and a ccess them there with the x, y and z fields of the vector structure from the host side.**
 
+## Launching a CUDA Kernel
+```
+kernel_name <<<grid, block>>> (argument list);
+```
 
+## Writing Your Kernel
+```
+__global__ void kernel_name(argument list);
+```
+- `__device__`: callable from the device only
+- `__host__`: callable from the host only
+
+**CUDA KERNELS ARE FUNCTIONS WITH RESTRICTION**
+- Access to device memory only
+- Must have `void` return type
+- No support for a variable number of arguments
+- No support for static variables
+- No support for function pointers
+- Exhibit an asynchronous behavior
+
+## Verifying Your Kernel
+```c
+void checkResult(float *hostRef, float *gpuRef, const int N) { 
+  double epsilon = 1.0E-8;
+  int match = 1;
+  for (int i = 0; i < N; i++) {
+    if (abs(hostRef[i] - gpuRef[i]) > epsilon) { 
+      match = 0;
+      printf("Arrays do not match!\n");
+      printf("host %5.2f gpu %5.2f at current %d\n",
+          hostRef[i], gpuRef[i], i); 
+      break;
+    } 
+  }
+  if (match) printf("Arrays match.\n\n");
+  return; 
+}
+```
+
+## Handling Errors
+```c
+CHECK(cudaMemcpy(d_C, gpuRef, nBytes, cudaMemcpyHostToDevice));
+```
+```c
+kernel_function<<<grid, block>>>(argument list); 
+CHECK(cudaDeviceSynchronize());
+```

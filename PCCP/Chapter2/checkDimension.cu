@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
   
   // define grid and block structure
   dim3 block(3);
-  dim3 grid ((nElem+block.x-1)/block.x);
+  dim3 grid ((nElem+block.x-1)/block.x); // (6+3-1)/3=2
 
   // check grid and block dimension from host side
   std::cout << "grid.x "  << grid.x  << " grid.y "  << grid.y  << " grid.z "  << grid.z  << std::endl;

@@ -65,3 +65,7 @@ threads << blocks <<< a grid
 ``` 
 
 **Usually, a grid is organized as a 2D array of blocks and a block is organized as a 3D array of threads.**
+
+**You define variables for grid and block on the host before launching a kernel, and a ccess them there with the x, y and z fields of the vector structure from the host side.**
+
+

@@ -158,3 +158,21 @@ idx = iy*nx+ix
 - Matrix coordinate
 - Global linear memory offset
 - Value of corresponding elements
+
+## Managing Devices
+### Using the Runtime API to Query GPU Information
+```
+cudaGetDeviceProperties()
+```
+and so on..
+
+### Determining the Best GPU
+### Using nvidia-smi to Query GPU Information
+```
+nvidia -q -i 0
+```
+
+### Setting Devices at Runtime
+```
+CUDA_VISIBL_DEVICES
+```

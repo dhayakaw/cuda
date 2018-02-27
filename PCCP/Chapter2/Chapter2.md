@@ -135,7 +135,7 @@ CHECK(cudaDeviceSynchronize());
 `nvprof`: a command-line profiling tool
 ~~~
 nvprof [nvprof_args] <application> [application_args]
-~~
+~~~
 
 ## Organizing Parallel Threads
 ### Index Matrices with Blocks and Threads

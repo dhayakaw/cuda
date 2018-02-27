@@ -115,8 +115,7 @@ void checkResult(float *hostRef, float *gpuRef, const int N) {
   const cudaError_t error = call;                                       \
   if(error!=cudaSuccess) {                                              \
     printf("Error: %s:%d, ", __FILE__, __LINE__);                       \
-    printf("code: %d, reason: %s\n", error, cudaGetErrorString(error)); \
-  }                                                                     \
+    printf("code: %d, reason: %s\n", error, cudaGetErrorString(error)); \ }                                                                     \
 }                                                                       \
 ```
 ```c
@@ -129,3 +128,33 @@ CHECK(cudaDeviceSynchronize());
 
 ## Timing Your Kernel
 ### Timing with CPU Timer
+- CPU timer: `gettimeofday()`, which returns the number of seconds since the epoch. Include `sys/time.h` header file.
+- To measure kernel: `cpuSecond()`:sumArraysOnGPU-timer.cu and `cudaDeviceSynchronize()`
+
+### Timing with nvprof
+~nvprof~: a command-line profiling tool
+~~~
+nvprof [nvprof_args] <application> [application_args]
+~~
+
+## Organizing Parallel Threads
+### Index Matrices with Blocks and Threads
+2D case
+1. Map the thread and block index
+```c
+ix = threadIdx.x+blockIdx.x*blockDim.x
+iy = threadIdy.y+blockIdy.y*blockDim.y
+```
+
+2. Map a matrix coordinate to a global memory location/index
+```c
+idx = iy*nx+ix
+```
+:`nx*ny` matrix
+
+`printThreadInfo` is used to print out
+- Thread index
+- Block index
+- Matrix coordinate
+- Global linear memory offset
+- Value of corresponding elements

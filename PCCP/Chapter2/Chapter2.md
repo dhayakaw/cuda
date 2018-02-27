@@ -1,6 +1,7 @@
 # Chapter 2: CUDA PROGRAMMING MODEL
 
-## CUDA Programming Structure
+## Introduction 
+### CUDA Programming Structure
 - Host: the CPU and its memory
 - Device: the GPU and its memory
 
@@ -13,7 +14,7 @@ A typical processing flow of a CUDA program
 2. Invoke kernels to operate on the data stored in GPU memory
 3. Copy data back from GPU memory to CPU memory
 
-## Managing Memory
+### Managing Memory
 - `cudaMalloc`: memory allocation
 ```
 cudaError_t cudaMalloc (void** devPtr, size_t size) ```
@@ -40,7 +41,7 @@ converts error to a human-redable error message
 
 LISTING: summing two arrays
 
-## Organizing Threads
+### Organizing Threads
 All threads spawned by a single kernel launch are collectively called a grid. A grid is made up of many thread blocks.
 ~~~
 threads << blocks <<< a grid
@@ -88,7 +89,7 @@ __global__ void kernel_name(argument list);
 - No support for function pointers
 - Exhibit an asynchronous behavior
 
-## Verifying Your Kernel
+### Verifying Your Kernel
 ```c
 void checkResult(float *hostRef, float *gpuRef, const int N) { 
   double epsilon = 1.0E-8;
@@ -107,7 +108,7 @@ void checkResult(float *hostRef, float *gpuRef, const int N) {
 }
 ```
 
-## Handling Errors
+### Handling Errors
 ```c
 #define CHECK(call)                                                     \
 {                                                                       \
@@ -125,3 +126,6 @@ CHECK(cudaMemcpy(d_C, gpuRef, nBytes, cudaMemcpyHostToDevice));
 kernel_function<<<grid, block>>>(argument list); 
 CHECK(cudaDeviceSynchronize());
 ```
+
+## Timing Your Kernel
+### Timing with CPU Timer

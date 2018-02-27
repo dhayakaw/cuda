@@ -109,6 +109,16 @@ void checkResult(float *hostRef, float *gpuRef, const int N) {
 
 ## Handling Errors
 ```c
+#define CHECK(call)                                                     \
+{                                                                       \
+  const cudaError_t error = call;                                       \
+  if(error!=cudaSuccess) {                                              \
+    printf("Error: %s:%d, ", __FILE__, __LINE__);                       \
+    printf("code: %d, reason: %s\n", error, cudaGetErrorString(error)); \
+  }                                                                     \
+}                                                                       \
+```
+```c
 CHECK(cudaMemcpy(d_C, gpuRef, nBytes, cudaMemcpyHostToDevice));
 ```
 ```c

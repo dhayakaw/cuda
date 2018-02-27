@@ -132,7 +132,7 @@ CHECK(cudaDeviceSynchronize());
 - To measure kernel: `cpuSecond()`:sumArraysOnGPU-timer.cu and `cudaDeviceSynchronize()`
 
 ### Timing with nvprof
-~nvprof~: a command-line profiling tool
+`nvprof`: a command-line profiling tool
 ~~~
 nvprof [nvprof_args] <application> [application_args]
 ~~

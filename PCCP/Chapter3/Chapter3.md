@@ -34,7 +34,7 @@ A thread block is scheduled on only one SM.
  - simultaneous hardware connections btw the CPU and GPU, enabling CPU cores to simultaneously run more tasks on the GPU
 
 ### Pascal and Maxwell
-[url (in Japanese)](https://pc.watch.impress.co.jp/docs/column/kaigai/755994.html)
+[URL (in Japanese)](https://pc.watch.impress.co.jp/docs/column/kaigai/755994.html)
 
 ### Profile-Driven Optimization
 - `nvprof`
@@ -46,3 +46,21 @@ A thread block is scheduled on only one SM.
 
 ### Warp Divergence
 Warp divergence(: threads in the same warp executing different instructions) would cause a paradox
+- Warp divergence occurs when threads within a warp take different code paths
+- Different `if-then-else` branches are executed serially
+- Try to adjust branch granularity to be a multiple of warp size to avoid warp divergence
+- Different warps can execute different code with no penalty on performance
+
+### Resource Partitioning
+Resources
+- Program counters
+- Registers (per SM) <-> threads(warps)
+- Shared memory (per SM) <-> thread blocks
+
+- active block
+- active warps
+  - Selected warp: actively executing
+  - Eligible warp: ready for execution but not currently executing
+  - Stalled warp: not ready for execution
+
+### Latency Hiding

@@ -29,3 +29,6 @@ GPU is 37 times faster than CPU!
 * thrust2: (Vector) copy, fill, sequence
 * thrust3: (Algorithms;Transformations) replace, transform, functional
 * thrust4: (Algorithms;Reductions) transform_reduce;to reduce an input sequence to a single value
+
+# Professional CUDA C Programming
+[url of pdf](http://www.hds.bme.hu/~fhegedus/C++/Professional%20CUDA%20C%20Programming.pdf)

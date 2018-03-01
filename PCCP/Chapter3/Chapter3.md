@@ -42,3 +42,7 @@ A thread block is scheduled on only one SM.
 
 ## Understandint the Nature of Warp Execution
 ### Warps and Thread Blocks
+32 threads for a warp
+
+### Warp Divergence
+Warp divergence(: threads in the same warp executing different instructions) would cause a paradox

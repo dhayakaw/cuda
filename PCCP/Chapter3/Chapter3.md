@@ -64,3 +64,16 @@ Resources
   - Stalled warp: not ready for execution
 
 ### Latency Hiding
+```math
+Number of Required Warps = Latency * Throughput
+```
+a thoeretically peak value, Thoughput: an achieved value
+
+Increase parallesim
+- Instruction-level parallelism (ILP): More independent instructions within a thread
+- Thread-level parallelism (TLP): More concurrently eligible threads
+
+### Occupancy
+```math
+occupancy = \frac{active warps}{maximum warps}
+```

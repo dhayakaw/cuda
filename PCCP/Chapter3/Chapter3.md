@@ -65,7 +65,7 @@ Resources
 
 ### Latency Hiding
 ```math
-Number of Required Warps = Latency * Throughput
+Number of Required Warps = Latency $\times$ Throughput
 ```
 a thoeretically peak value, Thoughput: an achieved value
 
@@ -75,5 +75,5 @@ Increase parallesim
 
 ### Occupancy
 ```math
-occupancy = \frac{active warps}{maximum warps}
+occupancy = $\frac{active warps}{maximum warps}$
 ```

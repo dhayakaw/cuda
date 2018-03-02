@@ -4,6 +4,7 @@
 Streaming Multiprocessors (SM)
 
 Fermi SM:
+
 - CUDA Cores
 - SharedMemory/L1 Cache
 - Register File
@@ -20,6 +21,7 @@ A thread block is scheduled on only one SM.
 
 ### The Fermi Architecture
 512 total CUDA cores
+
 - Each core has an Arithmetic logic unige (ALU) and a floating-point unit (FPU)
 - 16 SM, each with 32 CUDA cores
 - six 384-bit GDDR5 DRAM memory
@@ -46,6 +48,7 @@ A thread block is scheduled on only one SM.
 
 ### Warp Divergence
 Warp divergence(: threads in the same warp executing different instructions) would cause a paradox
+
 - Warp divergence occurs when threads within a warp take different code paths
 - Different `if-then-else` branches are executed serially
 - Try to adjust branch granularity to be a multiple of warp size to avoid warp divergence
@@ -53,10 +56,10 @@ Warp divergence(: threads in the same warp executing different instructions) wou
 
 ### Resource Partitioning
 Resources
+
 - Program counters
 - Registers (per SM) <-> threads(warps)
 - Shared memory (per SM) <-> thread blocks
-
 - active block
 - active warps
   - Selected warp: actively executing
@@ -64,16 +67,39 @@ Resources
   - Stalled warp: not ready for execution
 
 ### Latency Hiding
-```math
-Number of Required Warps = Latency $\times$ Throughput
-```
+~~~
+Number of Required Warps = Latency * Throughput
+~~~
 a thoeretically peak value, Thoughput: an achieved value
 
 Increase parallesim
-- Instruction-level parallelism (ILP): More independent instructions within a thread
-- Thread-level parallelism (TLP): More concurrently eligible threads
+
+- __Instruction-level parallelism (ILP)__: More independent instructions within a thread
+- __Thread-level parallelism (TLP)__: More concurrently eligible threads
 
 ### Occupancy
-```math
-occupancy = $\frac{active warps}{maximum warps}$
 ```
+occupancy = active warps / maximum warps
+```
+Guidelines for grid and block size
+
+- Keep the number of threads per block a multiple of warp size (32)
+- Avoid small block sizes: Start with at least 128 or 256 threads per block
+- Adjust block size up or down according to kernel resource requirements
+- Keep the number of blocks much greater than the number of SMs to expose sufficient parallelism to your device
+- Conduct experiments to dixcover the best execution configuration and resource usage
+
+### Synchronization
+
+- __System-level__: Wait for all work on both the host and the device to complete
+- __Block-level__: Wait for all threads in a thread block to reach the same point in execution on the device
+
+### Scalability
+transparent scalability: the ability to execute the same application code on a varying number of compute cores
+
+## Exposing Parallelism
+
+`nvprof --metrics achieved_occupancy ./a.out`: the ratio of the average active warps per cycle to the maximum number of warps supported on an SM
+
+
+

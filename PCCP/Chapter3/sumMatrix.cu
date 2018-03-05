@@ -78,8 +78,8 @@ int main(int argc, char **argv)
     CHECK(cudaSetDevice(dev));
 
     // set up data size of matrix
-    int nx = 1 << 14;
-    int ny = 1 << 14;
+    int nx = 1 << 13;
+    int ny = 1 << 13;
 
     int nxy = nx * ny;
     int nBytes = nxy * sizeof(float);

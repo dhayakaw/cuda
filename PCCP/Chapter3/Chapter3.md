@@ -99,7 +99,18 @@ transparent scalability: the ability to execute the same application code on a v
 
 ## Exposing Parallelism
 
-`nvprof --metrics achieved_occupancy ./a.out`: the ratio of the average active warps per cycle to the maximum number of warps supported on an SM
+### Checking Active Warps with nvprof
 
+`nvprof --metrics achieved_occupancy sumMatrix 32 32`: the ratio of the average active warps per cycle to the maximum number of warps supported on an SM
+
+Trade-off: number of active warps vs. occupancy
+
+### Checking Memory Operations with nvprof
+
+`nvprof --metrics gld_throughput./sumMatrix 32 32`: to check the memory read efficiency
+
+`gld_efficiency`: the ratio of requested global load throughput to required global load throughput
+
+### Exposing More Parallelism
 
 

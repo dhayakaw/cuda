@@ -21,3 +21,15 @@ Figure 4-2 (p.138)
 * Texture memory
 * Global memory
 
+### Memory Transfer
+
+* GDDR5: 144 GB/s
+* PCIe: 8GB/s
+
+### Pinned Memory
+
+`cudaMallocHost`
+
+### Zero-Copy Memory
+
+

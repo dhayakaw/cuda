@@ -169,7 +169,7 @@ and so on..
 ### Determining the Best GPU
 ### Using nvidia-smi to Query GPU Information
 ```
-nvidia -q -i 0
+nvidia-smi -q -i 0
 ```
 
 ### Setting Devices at Runtime
